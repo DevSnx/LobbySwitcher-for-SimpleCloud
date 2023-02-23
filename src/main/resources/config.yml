@@ -47,7 +47,7 @@ layout:
     lore:
       - §a
       - §aClick to Connect
-      - §a%ONLINEPLAYER%§8§c%MAXPLAYER% §7Players on this Server
+      - §a%ONLINEPLAYER%§8/§c%MAXPLAYER% §7Players on this Server
   offline:
     item: REDSTONE_BLOCK
     lore:

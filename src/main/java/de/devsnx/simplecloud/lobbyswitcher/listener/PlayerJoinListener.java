@@ -17,10 +17,6 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event){
 
-        event.getPlayer().sendMessage("SLOT: " + Lobbyswitcher.getCfg().getString("itemonjoin.slot"));
-        event.getPlayer().sendMessage("NAME: " + Lobbyswitcher.getCfg().getString("itemonjoin.name"));
-        event.getPlayer().sendMessage("ITEM: " + Lobbyswitcher.getCfg().getString("itemonjoin.item"));
-
         event.getPlayer().getInventory().setItem(Lobbyswitcher.getCfg().getInt("itemonjoin.slot"), new ItemCreator()
                 .displayName(Lobbyswitcher.getCfg().getString("itemonjoin.name"))
                 .material(Material.valueOf(Lobbyswitcher.getCfg().getString("itemonjoin.item")))
