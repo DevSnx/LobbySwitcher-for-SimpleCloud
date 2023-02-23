@@ -2,3 +2,6 @@ name: Lobbyswitcher
 version: '${project.version}'
 main: de.devsnx.simplecloud.lobbyswitcher.Lobbyswitcher
 api-version: 1.19
+
+depend:
+  - SimpleCloud-Plugin

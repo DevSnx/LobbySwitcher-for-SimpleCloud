@@ -17,7 +17,7 @@ import org.bukkit.potion.PotionType;
  */
 public class ItemCreator {
 
-    private String mat;
+    private Material mat;
 
     private Short data;
 
@@ -34,7 +34,7 @@ public class ItemCreator {
     public ItemCreator() {}
 
     public ItemCreator(ItemStack item) {
-        this.mat = item.getType().toString();
+        this.mat = item.getType();
         this.data = Short.valueOf(item.getDurability());
         this.amount = Integer.valueOf(item.getAmount());
         if (item.hasItemMeta()) {
@@ -47,7 +47,7 @@ public class ItemCreator {
         }
     }
 
-    public ItemCreator material(String mat) {
+    public ItemCreator material(Material mat) {
         this.mat = mat;
         return this;
     }
@@ -93,7 +93,7 @@ public class ItemCreator {
         return this;
     }
 
-    public String getMaterial() {
+    public Material getMaterial() {
         return this.mat;
     }
 
@@ -136,7 +136,7 @@ public class ItemCreator {
         if (this.potion != null) {
             item = this.potion.toItemStack(this.amount.intValue());
         } else {
-            item = new ItemStack(Material.valueOf(this.mat), this.amount.intValue(), this.data.shortValue());
+            item = new ItemStack(this.mat, this.amount.intValue(), this.data.shortValue());
         }
         if (this.display != null || this.lore != null) {
             ItemMeta meta = item.getItemMeta();

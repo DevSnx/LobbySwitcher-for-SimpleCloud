@@ -23,13 +23,11 @@ public class PlayerInteractListener implements Listener {
         Action action = event.getAction();
         ItemStack item = event.getPlayer().getItemInHand();
 
-        FileConfiguration cfg = Lobbyswitcher.getInstance().getConfig();
-
-        if(item.getItemMeta().getDisplayName().equalsIgnoreCase(cfg.getString("itemonjoin.name"))){
+        if(item.getItemMeta().getDisplayName().equalsIgnoreCase(Lobbyswitcher.getCfg().getString("itemonjoin.name"))){
 
             event.setCancelled(true);
 
-            if(item.getType().toString() == cfg.getString("itemonjoin.item")){
+            if(item.getType() == Material.valueOf(Lobbyswitcher.getCfg().getString("itemonjoin.item"))){
 
                 player.openInventory(Lobbyswitcher.getInstance().getInventoryManager().getInv());
 

@@ -3,31 +3,16 @@
 #   Configuration file for Lobbyswitcher   #
 #                                          #
 ############################################
-
-general:
-
-  # prefix for all Messages {prefix}
-  prefix: §7Lobbyswitcher §8-
-
-  # show full Server on Lobbyswitcher
-  seefullservers: true
-
-  # show offline Server in Lobbyswitcher
-  seeofflineservers: false
-
 itemonjoin:
 
-  # enable or disable get Lobbyswitcher Item on Join
-  onjoin: true
-
   # set the Slot for Lobbyswitcher Item
-  slot: 3
+  slot: 1
 
   # Set the Item, Mineraft Name no ID!
-  Item: WATCH
+  item: IRON_BLOCK
 
   # Name of this Lobbyswitcher Item
-  name: §bLobbyswitcher
+  name: §b§lLobbyswitcher
 
 gui:
 
@@ -35,7 +20,7 @@ gui:
   rows: 1
 
   # name of Lobbyswitcher Inventory
-  name: §6Lobbyswitcher
+  name: §8Select you Lobby
 
   # color for layout item name Items!
   item-color: §b
@@ -46,22 +31,31 @@ gui:
 
 layout:
   connected:
-    item: BLUE_WOOL
+    item: EMERALD_BLOCK
     lore:
+      - §a
       - §aYou are on this Server!
-      - §a%ONLINEPLAYERS% §7on this Server
+      - §a%ONLINEPLAYER% §7Players on this Server
   full:
-    item: RED_WOOL
+    item: REDSTONE_BLOCK
     lore:
+      - §a
       - §bThis Server is full!
-      - §a%ONLINEPLAYERS% §7on this Server
+      - §a%ONLINEPLAYER% §7Players on this Server
   empty:
-    item: GREEN_WOOL
+    item: IRON_BLOCK
     lore:
+      - §a
       - §aClick to Connect
-      - §a%ONLINEPLAYERS% §7on this Server
+      - §a%ONLINEPLAYER%§8§c%MAXPLAYER% §7Players on this Server
   offline:
-    item: GREEN_WOOL
+    item: REDSTONE_BLOCK
     lore:
+      - §a
       - §aClick to Connect
-      - §a%ONLINEPLAYERS% §7on this Server
+      - §a%ONLINEPLAYER% §7on this Server
+
+messages:
+  full: §cThis Server is full!
+  connected: §cAlready connected
+  send: §bYou send to Server %SERVER%
