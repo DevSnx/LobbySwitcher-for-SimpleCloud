@@ -1,0 +1,67 @@
+############################################
+#                                          #
+#   Configuration file for Lobbyswitcher   #
+#                                          #
+############################################
+
+general:
+
+  # prefix for all Messages {prefix}
+  prefix: §7Lobbyswitcher §8-
+
+  # show full Server on Lobbyswitcher
+  seefullservers: true
+
+  # show offline Server in Lobbyswitcher
+  seeofflineservers: false
+
+itemonjoin:
+
+  # enable or disable get Lobbyswitcher Item on Join
+  onjoin: true
+
+  # set the Slot for Lobbyswitcher Item
+  slot: 3
+
+  # Set the Item, Mineraft Name no ID!
+  Item: WATCH
+
+  # Name of this Lobbyswitcher Item
+  name: §bLobbyswitcher
+
+gui:
+
+  # rows of Lobbyswitcher Inventory
+  rows: 1
+
+  # name of Lobbyswitcher Inventory
+  name: §6Lobbyswitcher
+
+  # color for layout item name Items!
+  item-color: §b
+
+# Setup the Item Layouts for Lobbyswitcher Gui!
+# %ONLINEPLAYER% show Onlineplayers on this Server
+# %MAXPLAYER% show Maxonlineplayers for this Server
+
+layout:
+  connected:
+    item: BLUE_WOOL
+    lore:
+      - §aYou are on this Server!
+      - §a%ONLINEPLAYERS% §7on this Server
+  full:
+    item: RED_WOOL
+    lore:
+      - §bThis Server is full!
+      - §a%ONLINEPLAYERS% §7on this Server
+  empty:
+    item: GREEN_WOOL
+    lore:
+      - §aClick to Connect
+      - §a%ONLINEPLAYERS% §7on this Server
+  offline:
+    item: GREEN_WOOL
+    lore:
+      - §aClick to Connect
+      - §a%ONLINEPLAYERS% §7on this Server
