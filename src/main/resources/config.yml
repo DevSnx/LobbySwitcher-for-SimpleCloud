@@ -1,8 +1,18 @@
 ############################################
 #                                          #
 #   Configuration file for Lobbyswitcher   #
+#             v1.0.2-SNAPSHOT              #
 #                                          #
 ############################################
+
+general:
+
+  # show offline Servers in the Lobbyswitcher
+  show-offline-servers: true
+
+  # show starting Servers in the Lobbyswitcher
+  show-starting-servers: true
+
 itemonjoin:
 
   # set the Slot for Lobbyswitcher Item

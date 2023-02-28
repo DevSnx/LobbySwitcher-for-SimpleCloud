@@ -51,7 +51,6 @@ public class InventoryManager {
 
                         if(service.getName().startsWith("Lobby")){
 
-
                             if(service.isOnline()){
 
                                 if(CloudPlugin.getInstance().thisService().getName().equalsIgnoreCase(service.getName())){
@@ -72,37 +71,84 @@ public class InventoryManager {
 
                                 }else{
 
-                                    if(service.getOnlineCount() == service.getMaxPlayers()){
+                                    //show-starting-servers
+                                    if(Lobbyswitcher.getInstance().getConfig().getBoolean("general.show-starting-servers") == true){
 
-                                        ArrayList<String> lore = new ArrayList<>();
+                                        if(service.isStartingOrVisible()){
 
-                                        for(String message : cfg.getStringList("layout.full.lore")){
-                                            message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
-                                            message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
-                                            message = message.replace("%MOTD%", service.getMOTD());
+                                            if(service.getOnlineCount() == service.getMaxPlayers()){
 
-                                            lore.add(message);
+                                                ArrayList<String> lore = new ArrayList<>();
+
+                                                for(String message : cfg.getStringList("layout.full.lore")){
+                                                    message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
+                                                    message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
+                                                    message = message.replace("%MOTD%", service.getMOTD());
+
+                                                    lore.add(message);
+                                                }
+
+                                                inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
+
+                                                servers++;
+
+                                            }else if(service.getOnlineCount() < service.getMaxPlayers()){
+
+                                                ArrayList<String> lore = new ArrayList<>();
+
+                                                for(String message : cfg.getStringList("layout.empty.lore")){
+                                                    message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
+                                                    message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
+                                                    message = message.replace("%MOTD%", service.getMOTD());
+
+                                                    lore.add(message);
+                                                }
+
+                                                inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
+
+                                                servers++;
+
+                                            }
+
                                         }
 
-                                        inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
+                                    }
 
-                                        servers++;
+                                    if(Lobbyswitcher.getInstance().getConfig().getBoolean("general.show-offline-servers") == true){
 
-                                    }else if(service.getOnlineCount() < service.getMaxPlayers()){
+                                        if(service.getOnlineCount() == service.getMaxPlayers()){
 
-                                        ArrayList<String> lore = new ArrayList<>();
+                                            ArrayList<String> lore = new ArrayList<>();
 
-                                        for(String message : cfg.getStringList("layout.empty.lore")){
-                                            message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
-                                            message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
-                                            message = message.replace("%MOTD%", service.getMOTD());
+                                            for(String message : cfg.getStringList("layout.full.lore")){
+                                                message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
+                                                message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
+                                                message = message.replace("%MOTD%", service.getMOTD());
 
-                                            lore.add(message);
+                                                lore.add(message);
+                                            }
+
+                                            inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
+
+                                            servers++;
+
+                                        }else if(service.getOnlineCount() < service.getMaxPlayers()){
+
+                                            ArrayList<String> lore = new ArrayList<>();
+
+                                            for(String message : cfg.getStringList("layout.empty.lore")){
+                                                message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
+                                                message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
+                                                message = message.replace("%MOTD%", service.getMOTD());
+
+                                                lore.add(message);
+                                            }
+
+                                            inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
+
+                                            servers++;
+
                                         }
-
-                                        inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
-
-                                        servers++;
 
                                     }
 
