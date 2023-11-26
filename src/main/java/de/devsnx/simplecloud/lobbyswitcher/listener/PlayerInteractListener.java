@@ -23,18 +23,15 @@ public class PlayerInteractListener implements Listener {
         Action action = event.getAction();
         ItemStack item = event.getPlayer().getItemInHand();
 
-        if(item.getItemMeta().getDisplayName().equalsIgnoreCase(Lobbyswitcher.getCfg().getString("itemonjoin.name"))){
+        if(event.getAction() == Action.RIGHT_CLICK_AIR && item != null|| event.getAction() == Action.RIGHT_CLICK_BLOCK && item != null){
+            if(item.getItemMeta().getDisplayName().equalsIgnoreCase(Lobbyswitcher.getCfg().getString("itemonjoin.name").replace("&", "§"))){
+                event.setCancelled(true);
+                if(item.getType() == Material.valueOf(Lobbyswitcher.getCfg().getString("itemonjoin.item").replace("&", "§"))){
 
-            event.setCancelled(true);
+                    player.openInventory(Lobbyswitcher.getInstance().getInventoryManager().getInv());
 
-            if(item.getType() == Material.valueOf(Lobbyswitcher.getCfg().getString("itemonjoin.item"))){
-
-                player.openInventory(Lobbyswitcher.getInstance().getInventoryManager().getInv());
-
+                }
             }
-
         }
-
     }
-
 }

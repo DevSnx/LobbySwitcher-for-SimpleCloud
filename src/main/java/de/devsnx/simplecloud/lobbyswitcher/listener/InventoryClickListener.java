@@ -39,11 +39,11 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-        if(event.getView().getTitle().equalsIgnoreCase(Lobbyswitcher.getCfg().getString("gui.name"))){
+        if(event.getView().getTitle().equalsIgnoreCase(Lobbyswitcher.getCfg().getString("gui.name").replace("&", "§"))){
 
             event.setCancelled(true);
 
-            String serverName = item.getItemMeta().getDisplayName().replace(Lobbyswitcher.getCfg().getString("gui.item-color"), "");
+            String serverName = item.getItemMeta().getDisplayName().replace(Lobbyswitcher.getCfg().getString("gui.item-color").replace("&", "§"), "");
 
             if(item.getType() == Material.valueOf(Lobbyswitcher.getCfg().getString("layout.connected.item"))){
                 getMessages("messages.connected", player, serverName);
@@ -77,6 +77,7 @@ public class InventoryClickListener implements Listener {
         String message = Lobbyswitcher.getCfg().getString(path);
 
         message = message.replace("%SERVER%", service);
+        message = message.replace("&", "§");
 
         player.sendMessage(message);
 

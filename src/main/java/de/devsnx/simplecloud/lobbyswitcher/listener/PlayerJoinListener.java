@@ -18,10 +18,8 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event){
 
         event.getPlayer().getInventory().setItem(Lobbyswitcher.getCfg().getInt("itemonjoin.slot"), new ItemCreator()
-                .displayName(Lobbyswitcher.getCfg().getString("itemonjoin.name"))
-                .material(Material.valueOf(Lobbyswitcher.getCfg().getString("itemonjoin.item")))
-                .build());
+                .displayName(Lobbyswitcher.getCfg().getString("itemonjoin.name").replace("&", "§"))
+                .material(Material.valueOf(Lobbyswitcher.getCfg().getString("itemonjoin.item"))).build());
 
     }
-
 }

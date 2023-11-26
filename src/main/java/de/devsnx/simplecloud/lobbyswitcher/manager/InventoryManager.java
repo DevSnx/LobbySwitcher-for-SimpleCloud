@@ -31,7 +31,7 @@ public class InventoryManager {
 
         this.inv = Bukkit.createInventory(null,
                 (cfg.getInt("gui.rows")*9),
-                cfg.getString("gui.name"));
+                cfg.getString("gui.name").replace("&", "§"));
 
         refreshLobbys();
     }
@@ -41,11 +41,11 @@ public class InventoryManager {
             @Override
             public void run() {
 
+                inv.clear();
+
                 if(CloudAPI.getInstance().getCloudServiceGroupManager().getLobbyGroups() != null){
 
                     FileConfiguration cfg = Lobbyswitcher.getCfg();
-
-                    int servers = 0;
 
                     for(ICloudService service : CloudAPI.getInstance().getCloudServiceManager().getAllCachedObjects()){
 
@@ -61,13 +61,13 @@ public class InventoryManager {
                                         message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
                                         message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
                                         message = message.replace("%MOTD%", service.getMOTD());
+                                        message = message.replace("&", "§");
 
                                         lore.add(message);
                                     }
 
-                                    inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.connected.item"))).lore(lore).build());
-
-                                    servers++;
+                                    int platz = Integer.valueOf(service.getName().replace("Lobby-", ""));
+                                    inv.setItem((platz-1), new ItemCreator().displayName(cfg.getString("gui.item-color").replace("&", "§") + service.getName()).material(Material.valueOf(cfg.getString("layout.connected.item"))).lore(lore).build());
 
                                 }else{
 
@@ -84,13 +84,13 @@ public class InventoryManager {
                                                     message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
                                                     message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
                                                     message = message.replace("%MOTD%", service.getMOTD());
+                                                    message = message.replace("&", "§");
 
                                                     lore.add(message);
                                                 }
 
-                                                inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
-
-                                                servers++;
+                                                int platz = Integer.valueOf(service.getName().replace("Lobby-", ""));
+                                                inv.setItem((platz-1), new ItemCreator().displayName(cfg.getString("gui.item-color").replace("&", "§") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
 
                                             }else if(service.getOnlineCount() < service.getMaxPlayers()){
 
@@ -100,13 +100,13 @@ public class InventoryManager {
                                                     message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
                                                     message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
                                                     message = message.replace("%MOTD%", service.getMOTD());
+                                                    message = message.replace("&", "§");
 
                                                     lore.add(message);
                                                 }
 
-                                                inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
-
-                                                servers++;
+                                                int platz = Integer.valueOf(service.getName().replace("Lobby-", ""));
+                                                inv.setItem((platz-1), new ItemCreator().displayName(cfg.getString("gui.item-color").replace("&", "§") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
 
                                             }
 
@@ -124,13 +124,14 @@ public class InventoryManager {
                                                 message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
                                                 message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
                                                 message = message.replace("%MOTD%", service.getMOTD());
+                                                message = message.replace("&", "§");
 
                                                 lore.add(message);
                                             }
 
-                                            inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
+                                            int platz = Integer.valueOf(service.getName().replace("Lobby-", ""));
+                                            inv.setItem((platz-1), new ItemCreator().displayName(cfg.getString("gui.item-color").replace("&", "§") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
 
-                                            servers++;
 
                                         }else if(service.getOnlineCount() < service.getMaxPlayers()){
 
@@ -140,13 +141,13 @@ public class InventoryManager {
                                                 message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
                                                 message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
                                                 message = message.replace("%MOTD%", service.getMOTD());
+                                                message = message.replace("&", "§");
 
                                                 lore.add(message);
                                             }
 
-                                            inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
-
-                                            servers++;
+                                            int platz = Integer.valueOf(service.getName().replace("Lobby-", ""));
+                                            inv.setItem((platz-1), new ItemCreator().displayName(cfg.getString("gui.item-color").replace("&", "§") + service.getName()).material(Material.valueOf(cfg.getString("layout.empty.item"))).lore(lore).build());
 
                                         }
 
@@ -162,13 +163,13 @@ public class InventoryManager {
                                     message = message.replace("%MAXPLAYER%", String.valueOf(service.getMaxPlayers()));
                                     message = message.replace("%ONLINEPLAYER%", String.valueOf(service.getOnlineCount()));
                                     message = message.replace("%MOTD%", service.getMOTD());
+                                    message = message.replace("&", "§");
 
                                     lore.add(message);
                                 }
 
-                                inv.setItem(servers, new ItemCreator().displayName(cfg.getString("gui.item-color") + service.getName()).material(Material.valueOf(cfg.getString("layout.offline.item"))).lore(lore).build());
-
-                                servers++;
+                                int platz = Integer.valueOf(service.getName().replace("Lobby-", ""));
+                                inv.setItem((platz-1), new ItemCreator().displayName(cfg.getString("gui.item-color").replace("&", "§") + service.getName()).material(Material.valueOf(cfg.getString("layout.offline.item"))).lore(lore).build());
 
                             }
 
