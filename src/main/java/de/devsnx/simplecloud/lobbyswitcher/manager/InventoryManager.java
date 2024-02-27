@@ -49,10 +49,7 @@ public class InventoryManager {
 
                     for(ICloudService service : CloudAPI.getInstance().getCloudServiceManager().getAllCachedObjects()){
 
-                        if(service.getName().startsWith("Lobby")
-                                || service.getName().startsWith("lobby")
-                                || service.getName().startsWith("hub")
-                                || service.getName().startsWith("lobbies")){
+                        if(service.getName().startsWith(cfg.getString("general.server-name"))){
 
                             if(service.isOnline()){
 
