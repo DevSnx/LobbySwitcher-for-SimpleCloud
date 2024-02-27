@@ -49,7 +49,10 @@ public class InventoryManager {
 
                     for(ICloudService service : CloudAPI.getInstance().getCloudServiceManager().getAllCachedObjects()){
 
-                        if(service.getName().startsWith("Lobby")){
+                        if(service.getName().startsWith("Lobby")
+                                || service.getName().startsWith("lobby")
+                                || service.getName().startsWith("hub")
+                                || service.getName().startsWith("lobbies")){
 
                             if(service.isOnline()){
 
@@ -71,7 +74,6 @@ public class InventoryManager {
 
                                 }else{
 
-                                    //show-starting-servers
                                     if(Lobbyswitcher.getInstance().getConfig().getBoolean("general.show-starting-servers") == true){
 
                                         if(service.isStartingOrVisible()){
