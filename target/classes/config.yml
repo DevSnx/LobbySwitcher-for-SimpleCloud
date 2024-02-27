@@ -13,9 +13,6 @@ general:
   # show starting Servers in the Lobbyswitcher
   show-starting-servers: true
 
-  # name of lobby Server
-  server-name: 'Lobby'
-
 itemonjoin:
 
   # set the Slot for Lobbyswitcher Item
