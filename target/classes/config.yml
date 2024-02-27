@@ -1,0 +1,71 @@
+############################################
+#                                          #
+#   Configuration file for Lobbyswitcher   #
+#            v2.0.1-SNAPSHOT               #
+#                                          #
+############################################
+
+general:
+
+  # show offline Servers in the Lobbyswitcher
+  show-offline-servers: true
+
+  # show starting Servers in the Lobbyswitcher
+  show-starting-servers: true
+
+itemonjoin:
+
+  # set the Slot for Lobbyswitcher Item
+  slot: 1
+
+  # Set the Item, Mineraft Name no ID!
+  item: IRON_BLOCK
+
+  # Name of this Lobbyswitcher Item
+  name: '&b&lLobbyswitcher'
+
+gui:
+
+  # rows of Lobbyswitcher Inventory
+  rows: 1
+
+  # name of Lobbyswitcher Inventory
+  name: '&8Select you Lobby'
+
+  # color for layout item name Items!
+  item-color: '&b'
+
+# Setup the Item Layouts for Lobbyswitcher Gui!
+# %ONLINEPLAYER% show Onlineplayers on this Server
+# %MAXPLAYER% show Maxonlineplayers for this Server
+
+layout:
+  connected:
+    item: EMERALD_BLOCK
+    lore:
+      - '&a'
+      - '&aYou are on this Server!'
+      - '&a%ONLINEPLAYER% &7Players on this Server'
+  full:
+    item: REDSTONE_BLOCK
+    lore:
+      - '&a'
+      - '&bThis Server is full!'
+      - '&a%ONLINEPLAYER% &7Players on this Server'
+  empty:
+    item: IRON_BLOCK
+    lore:
+      - '&a'
+      - '&aClick to Connect'
+      - '&a%ONLINEPLAYER%&8/&c%MAXPLAYER% &7Players on this Server'
+  offline:
+    item: REDSTONE_BLOCK
+    lore:
+      - '&a'
+      - '&aClick to Connect'
+      - '&a%ONLINEPLAYER% §7on this Server'
+
+messages:
+  full: '&cThis Server is full!'
+  connected: '&cAlready connected'
+  send: '&bYou send to Server %SERVER%'

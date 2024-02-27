@@ -1,0 +1,7 @@
+name: Lobbyswitcher
+version: '2.0.1-SNAPSHOT'
+main: de.devsnx.simplecloud.lobbyswitcher.Lobbyswitcher
+api-version: 1.19
+
+depend:
+  - SimpleCloud-Plugin
