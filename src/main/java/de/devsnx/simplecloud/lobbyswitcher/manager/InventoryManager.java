@@ -21,6 +21,7 @@ import java.util.ArrayList;
  * @author DevSnx
  * @since 23.02.2023
  */
+
 public class InventoryManager {
 
     private Inventory inv;
